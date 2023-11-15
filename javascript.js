@@ -14,4 +14,22 @@ const multiply = function (array) {
 const divide =  function (a, b){  return (a/b); };
 
 
+<
+function operate(operator, a, b) {
+    if(operator == "+"){
+        add(a,b);
+    }
+    else if(operator == "-"){
+        subtract(a, b);
+    }
+    else if(operator == "*"){
+        multiply([a, b]);
+    }
+    else if(operator == "/"){
+        divide(a,b);
+    }
+    else{
+        console.log("error");
+    }
+}
 
