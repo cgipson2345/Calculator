@@ -12,3 +12,6 @@ const multiply = function (array) {
   };
 
 const divide =  function (a, b){  return (a/b); };
+
+
+
