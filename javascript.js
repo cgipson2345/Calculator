@@ -42,9 +42,12 @@ function operate(operator, a, b) {
 
 }
 
- firstNumber = prompt("enter a number")
- secondNumber= prompt("enter a second number");
- operator = prompt("enter an operator");
+ //firstNumber = parseInt(prompt("enter a number"));
+ //secondNumber= parseInt(prompt("enter a second number"));
+ //operator = prompt("enter an operator");
 
 let pa = operate(operator, firstNumber, secondNumber);
 console.log(pa);
+
+const display = document.querySelector("display");
+
