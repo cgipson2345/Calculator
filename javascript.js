@@ -1,4 +1,9 @@
 
+let secondNumber;
+let firstNumber;
+let operator;
+
+
 function add(a,b) {
     return a + b;
 }
@@ -14,22 +19,32 @@ const multiply = function (array) {
 const divide =  function (a, b){  return (a/b); };
 
 
-<
+
 function operate(operator, a, b) {
+    let t = 0;
+    
     if(operator == "+"){
-        add(a,b);
+        t = add(a,b);
     }
     else if(operator == "-"){
-        subtract(a, b);
+        t = subtract(a, b);
     }
     else if(operator == "*"){
-        multiply([a, b]);
+        t  = multiply([a, b]);
     }
     else if(operator == "/"){
-        divide(a,b);
+      t =   divide(a,b);
     }
     else{
-        console.log("error");
+       return console.log("error");
     }
+    return t;
+
 }
 
+ firstNumber = prompt("enter a number")
+ secondNumber= prompt("enter a second number");
+ operator = prompt("enter an operator");
+
+let pa = operate(operator, firstNumber, secondNumber);
+console.log(pa);
