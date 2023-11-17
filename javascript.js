@@ -2,7 +2,8 @@
 let secondNumber;
 let firstNumber;
 let operator;
-
+let fullEquation = "";
+let i  = false;
 
 function add(a,b) {
     return a + b;
@@ -68,7 +69,10 @@ const ops  = document.querySelectorAll(".operator");
 ops.forEach((button)=> {
 
     button.addEventListener("click", () => {
+        firstNumber = display.textContent;
+        operator = button.textContent;
         display.textContent =   display.textContent + button.textContent ;
+        i = true;   // USE THIS TO FIND THE SECOND NUMBER
     });
     
 
@@ -76,3 +80,18 @@ ops.forEach((button)=> {
 
 
 
+const clear = document.querySelector(".clear");
+
+clear.addEventListener("click", () => {
+
+    display.textContent = "";
+
+});
+
+
+const equals = document.querySelector(".equals");
+
+equals.addEventListener("click", () => {
+    fullEquation = display.textContent;
+
+});
