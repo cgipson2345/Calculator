@@ -46,8 +46,33 @@ function operate(operator, a, b) {
  //secondNumber= parseInt(prompt("enter a second number"));
  //operator = prompt("enter an operator");
 
-let pa = operate(operator, firstNumber, secondNumber);
-console.log(pa);
+//let pa = operate(operator, firstNumber, secondNumber);
+//console.log(pa);
 
-const display = document.querySelector("display");
+const display = document.querySelector(".display");
+
+const number  = document.querySelectorAll(".number");
+
+number.forEach((button)=> {
+
+    button.addEventListener("click", () => {
+        display.textContent =   display.textContent + button.textContent ;
+    });
+    
+
+});
+
+
+const ops  = document.querySelectorAll(".operator");
+
+ops.forEach((button)=> {
+
+    button.addEventListener("click", () => {
+        display.textContent =   display.textContent + button.textContent ;
+    });
+    
+
+});
+
+
 
