@@ -2,7 +2,7 @@
 let secondNumber;
 let secondNumberHolder = "";
 let firstNumber;
-let operator;
+let operator = "";
 let fullEquation = "";
 let i  = false;
 
@@ -29,6 +29,11 @@ function operate(operator, a, b) {
     console.log(a);
     console.log(b);
 
+    if(operator == "/" && b == 0){
+        alert("DONT BREAK THE CALCULATOR");
+        return 0;
+    }
+
     if(operator == "+"){
         t = add(a,b);
     }
@@ -45,6 +50,27 @@ function operate(operator, a, b) {
        return console.log("error");
     }
     return t;
+
+}
+
+function emptier () {
+    // @ts-ignore
+    display.textContent = "";
+    secondNumber = 0;
+    secondNumberHolder = "";
+    firstNumber = "";
+    operator = "";
+    i = false;
+
+}
+
+
+function equalsresolution () {
+    secondNumber = 0;
+    secondNumberHolder = "";
+    firstNumber = 0;
+    i = false;
+    operator = "";
 
 }
 
@@ -79,8 +105,26 @@ const ops  = document.querySelectorAll(".operator");
 ops.forEach((button)=> {
 
     button.addEventListener("click", () => {
+        if(operator != "") {
+            secondNumber = parseFloat(secondNumberHolder);
+            if(isNaN(secondNumber)){
+                secondNumber = 0;
+                return;
+
+            }
+            // @ts-ignore
+            else {
+            // @ts-ignore
+            display.textContent = operate(operator, firstNumber, secondNumber);
+            // @ts-ignore
+          //  firstNumber = parseInt(display?.textContent);
+            equalsresolution();
+            }
+
+        }
         // @ts-ignore
-        firstNumber = parseInt(display.textContent);
+        firstNumber = parseFloat(display.textContent);
+        // @ts-ignore
         operator = button.textContent;
         // @ts-ignore
         display.textContent =   display.textContent + button.textContent ;
@@ -98,11 +142,7 @@ const clear = document.querySelector(".clear");
 clear.addEventListener("click", () => {
 
     // @ts-ignore
-    display.textContent = "";
-    secondNumber = 0;
-    secondNumberHolder = "";
-    firstNumber = "";
-    i = false;
+    emptier();
 
 });
 
@@ -115,9 +155,19 @@ equals.addEventListener("click", () => {
     //fullEquation = display.textContent;
     console.log(secondNumberHolder);
     secondNumber = parseInt(secondNumberHolder);
-    // @ts-ignore
-    display.textContent = operate(operator, firstNumber, secondNumber);
+    if(isNaN(secondNumber)){
+        secondNumber = 0;
+        // @ts-ignore
+        display.textContent = "";
+        equalsresolution();
+        return;
 
+    } 
+    else {
+        // @ts-ignore
+    display.textContent = operate(operator, firstNumber, secondNumber);
+    equalsresolution();
+    }
 
 
 });
