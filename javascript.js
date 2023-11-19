@@ -1,5 +1,6 @@
 
 let secondNumber;
+let secondNumberHolder = "";
 let firstNumber;
 let operator;
 let fullEquation = "";
@@ -22,8 +23,12 @@ const divide =  function (a, b){  return (a/b); };
 
 
 function operate(operator, a, b) {
+
     let t = 0;
-    
+    console.log(operator);
+    console.log(a);
+    console.log(b);
+
     if(operator == "+"){
         t = add(a,b);
     }
@@ -57,7 +62,12 @@ const number  = document.querySelectorAll(".number");
 number.forEach((button)=> {
 
     button.addEventListener("click", () => {
+        // @ts-ignore
         display.textContent =   display.textContent + button.textContent ;
+        if(i === true) {
+            // @ts-ignore
+            secondNumberHolder  = secondNumberHolder + button.textContent;
+        }
     });
     
 
@@ -69,8 +79,10 @@ const ops  = document.querySelectorAll(".operator");
 ops.forEach((button)=> {
 
     button.addEventListener("click", () => {
-        firstNumber = display.textContent;
+        // @ts-ignore
+        firstNumber = parseInt(display.textContent);
         operator = button.textContent;
+        // @ts-ignore
         display.textContent =   display.textContent + button.textContent ;
         i = true;   // USE THIS TO FIND THE SECOND NUMBER
     });
@@ -82,16 +94,30 @@ ops.forEach((button)=> {
 
 const clear = document.querySelector(".clear");
 
+// @ts-ignore
 clear.addEventListener("click", () => {
 
+    // @ts-ignore
     display.textContent = "";
+    secondNumber = 0;
+    secondNumberHolder = "";
+    firstNumber = "";
+    i = false;
 
 });
 
 
 const equals = document.querySelector(".equals");
 
+// @ts-ignore
 equals.addEventListener("click", () => {
-    fullEquation = display.textContent;
+    // @ts-ignore
+    //fullEquation = display.textContent;
+    console.log(secondNumberHolder);
+    secondNumber = parseInt(secondNumberHolder);
+    // @ts-ignore
+    display.textContent = operate(operator, firstNumber, secondNumber);
+
+
 
 });
